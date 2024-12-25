@@ -30,7 +30,11 @@ func (c *Client) Read() {
 	for {
 		messageType, p, err := c.Conn.ReadMessage()
 		if err != nil {
-			log.Println(err)
+			if websocket.IsCloseError(err, websocket.CloseNormalClosure, websocket.CloseGoingAway) {
+				log.Println("Client disconnected:", c.ID)
+			} else {
+				log.Println(err)
+			}
 			return
 		}
 		message := Message{
