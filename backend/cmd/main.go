@@ -9,7 +9,7 @@ import (
 func main() {
 	fmt.Print("Echo Chattin'")
 	setupRoutes()
-	http.ListenAndServe(":9000")
+	http.ListenAndServe(":9000", nil)
 }
 
 func setupRoutes() {
