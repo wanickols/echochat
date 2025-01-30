@@ -17,8 +17,9 @@
         "height": 600
       }
     ],
+    
     "security": {
-      "csp": null
+      "csp": "default-src 'self' ws://localhost:9000"
     }
   },
   "bundle": {

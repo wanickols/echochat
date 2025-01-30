@@ -7,15 +7,17 @@ import (
 )
 
 func main() {
-	fmt.Print("Echo Chattin'")
+	fmt.Println("Echo Chattin'")
 	setupRoutes()
 	http.ListenAndServe(":9000", nil)
 }
 
 func setupRoutes() {
+	//Make Pool
 	pool := websocket.NewPool()
 	go pool.Start()
 
+	
 	http.HandleFunc("/ws", func(w http.ResponseWriter, r *http.Request) {
 		serveWS(pool, w, r)
 	})
